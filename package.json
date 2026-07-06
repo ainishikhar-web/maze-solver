@@ -1,0 +1,9 @@
+{
+  "name": "maze-solver",
+  "version": "1.0.0",
+  "description": "迷宫求解系统 - 数据结构课程设计",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "keywords": ["maze", "dfs", "bfs", "data-structure"],
+  "license": "MIT"
+}
