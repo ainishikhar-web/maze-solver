@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>迷宫求解系统 - 数据结构课程设计</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header id="header">
+    <h1>迷宫求解系统</h1>
+    <p class="subtitle">Maze Solver · DFS &amp; BFS 算法可视化</p>
+  </header>
+
+  <div id="mainLayout">
+    <!-- 左侧：迷宫画布 -->
+    <section id="mazeSection">
+      <div id="canvasContainer">
+        <canvas id="mazeCanvas"></canvas>
+      </div>
+      <div id="stepInfo">等待生成迷宫…</div>
+      <div id="statBar">—</div>
+      <div id="solvedLabel"></div>
+    </section>
+
+    <!-- 右侧：控制面板 -->
+    <aside id="controlPanel">
+      <!-- 算法选择 -->
+      <div class="panel-section">
+        <h3>搜索算法</h3>
+        <div class="algo-selector">
+          <button class="algo-btn active" data-algo="dfs">DFS<br><small>栈</small></button>
+          <button class="algo-btn" data-algo="bfs">BFS<br><small>队列</small></button>
+        </div>
+      </div>
+
+      <!-- 迷宫大小 -->
+      <div class="panel-section">
+        <h3>迷宫大小</h3>
+        <div class="size-controls">
+          <label>行: <input type="number" id="rows" value="10" min="3" max="50"></label>
+          <label>列: <input type="number" id="cols" value="10" min="3" max="50"></label>
+        </div>
+        <div class="size-presets">
+          <button class="size-preset" data-rows="5" data-cols="5">5×5</button>
+          <button class="size-preset" data-rows="10" data-cols="10">10×10</button>
+          <button class="size-preset" data-rows="15" data-cols="15">15×15</button>
+          <button class="size-preset" data-rows="20" data-cols="20">20×20</button>
+        </div>
+      </div>
+
+      <!-- 速度控制 -->
+      <div class="panel-section">
+        <h3>动画速度</h3>
+        <div class="speed-control">
+          <input type="range" id="speed" min="1" max="100" value="50">
+          <span id="speedVal">50%</span>
+        </div>
+      </div>
+
+      <!-- 操作按钮 -->
+      <div class="panel-section actions">
+        <button id="generateBtn" class="btn primary">🔄 生成迷宫</button>
+        <button id="solveBtn" class="btn accent">▶ DFS 求解</button>
+        <button id="resetBtn" class="btn">↺ 重置</button>
+      </div>
+
+      <!-- 统计信息 -->
+      <div class="panel-section">
+        <h3>统计信息</h3>
+        <div class="stats-grid">
+          <div class="stat-item"><span class="stat-label">探索节点</span><span class="stat-value" id="statNodes">-</span></div>
+          <div class="stat-item"><span class="stat-label">路径长度</span><span class="stat-value" id="statPath">-</span></div>
+          <div class="stat-item"><span class="stat-label">搜索步数</span><span class="stat-value" id="statSteps">-</span></div>
+        </div>
+      </div>
+
+      <!-- 算法说明 -->
+      <div class="panel-section" id="algoDescSection">
+        <h3>算法说明</h3>
+        <pre id="algoDesc"></pre>
+      </div>
+    </aside>
+  </div>
+
+  <!-- 文本输出 -->
+  <section id="textSection">
+    <h3>迷宫地图（文本视图）</h3>
+    <p class="hint"># 墙壁 · 通道 * 路径 | 入口: 左上绿色 | 出口: 右下红色</p>
+    <textarea id="textOutput" readonly spellcheck="false"></textarea>
+  </section>
+
+  <footer id="footer">
+    <p>数据结构与算法课程设计 · 兰州交通大学 · 2025秋</p>
+  </footer>
+</div>
+
+<script src="maze-core.js"></script>
+<script src="renderer.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
